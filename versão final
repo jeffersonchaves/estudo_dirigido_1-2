@@ -6,115 +6,122 @@
 
 using namespace std;
 
-vector <int> pronto;
-int s,m,y;
+vector<int> pronto;
+int s, m, y;
+
 void operacoes();
 void soma();
 void media();
 
-void operacoes(){
-        cout<<"Qual dessas operacoes voce quer executar?"<< endl;
-        cout << "1_ Somar os elementos da lista" << endl;
-        cout << "2_ Obter a media dos elementos da lista" << endl;
-        cout << "3_ Obter a media e a soma dos elementos da lista" << endl;
-        cout << "4_ Substituir os elementos negativos por 0 e imprimir a média" << endl;
-        cout << "5_ Substituir os elementos negativos por 0 e imprimir a média e a soma" << endl;
-        cout << "6_ Obter os elementos da lista ordenada" << endl;
-        cout << "0_ Sair da aplicacao" << endl;
-}
-void soma(){
-     s=0,y=0;
-     for(y=0; y!=pronto.size(); y++){
-     s=s+pronto[y];
-}}
-void media(){
-     soma();
-     m=s/y;
+void operacoes() {
+    cout << "Qual dessas operacoes voce quer executar?" << endl;
+    cout << "1_ Somar os elementos da lista" << endl;
+    cout << "2_ Obter a media dos elementos da lista" << endl;
+    cout << "3_ Obter a media e a soma dos elementos da lista" << endl;
+    cout << "4_ Substituir os elementos negativos por 0 e imprimir a média" << endl;
+    cout << "5_ Substituir os elementos negativos por 0 e imprimir a média e a soma" << endl;
+    cout << "6_ Obter os elementos da lista ordenada" << endl;
+    cout << "0_ Sair da aplicacao" << endl;
 }
 
-int main(){
- int num,opcao;
- string parada;
- cout<<"Insira quantos numeros desejar em sua lista"<<endl;
- cout<<"Digite sim caso queira continuar digitando"<<endl;
- cout<<"Digite nao caso queira parar de digitar"<<endl;
-
-
- do{
- cout << "Digite um numero inteiro: ";
- cin >> num;
- pronto.push_back(num);
-    cout << "Deseja continuar digitando?"<<endl;
-    cin >> parada;
-
- }while(parada == "sim");
-system("clear");
-
-do{
-operacoes();
-cout << "Digite o numero referente a operacao que deseja executar: ";
-cin >> opcao;
-cout << endl;
-switch(opcao){
-   case 1: {
-   soma();
-   cout <<"A soma dos elementos e: "<<s<<endl;
-   }
-   break;
-
-   case 2: {
-   media();
-   cout <<"A media dos elementos e: "<<m<<endl;
-   }
-   break;
-
-   case 3: {
-   media();
-   soma();
-   cout <<"A media dos elementos e: "<<m<<" e a soma deles e: "<<s<<endl;
-   }
-   break;
-
-   case 4: {
-   for(int i=0; i!= pronto.size(); i++){
-   if(pronto[i] < 0){
-   pronto[i] = 0;
-   }
-   media();
-   }
-   cout <<"A media dos elementos positivos e: "<<m<<endl;
-   }
-   break;
-
-   case 5: {
-   sort(pronto.begin(), pronto.end());
-   for(int i=0; i!=pronto.size(); i++){
-   if(pronto[i]==pronto[i+1]){
-   pronto[i]= 0;
-   pronto[i++]=0;
-   }
-   }
-   media();
-   soma();
-   cout <<"A media dos elementos positivos e: "<<m<<" e a soma deles e: "<<s<<endl;
-   }
-   break;
-   case 6:
-   {
-   cout<<"***SUA LISTA EM ORDEM CRESCENTE***"<<endl;
-   std::sort(pronto.begin(), pronto.end());
-   for(int i=0; i!=pronto.size(); i++){
-   cout<<pronto[i]<<endl;
-   }
-   }
-   break;
+void soma() {
+    s = 0, y = 0;
+    for (y = 0; y != pronto.size(); y++) {
+        s = s + pronto[y];
+    }
 }
-cout << "Insira um numero dentre os referentes as operacoes, exceto 0, para continuar a execucao"<<endl;
-cout << "Ou 0 caso queira sair da aplicacao"<<endl;
-cin >> opcao;
 
-system("clear");
+void media() {
+    soma();
+    m = s / y;
+}
 
-}while(opcao!=0);
+int main() {
+    int num, opcao;
+    string parada;
+    cout << "Insira quantos numeros desejar em sua lista" << endl;
+    cout << "Digite sim caso queira continuar digitando" << endl;
+    cout << "Digite nao caso queira parar de digitar" << endl;
 
-return 0;}
+
+    do {
+        cout << "Digite um numero inteiro: ";
+        cin >> num;
+        pronto.push_back(num);
+        cout << "Deseja continuar digitando?" << endl;
+        cin >> parada;
+
+    } while (parada == "sim");
+
+    system("clear");
+
+    do {
+        operacoes();
+
+        cout << "Digite o numero referente a operacao que deseja executar: ";
+        cin >> opcao;
+        cout << endl;
+
+        switch (opcao) {
+            case 1: {
+                soma();
+                cout << "A soma dos elementos e: " << s << endl;
+            }
+                break;
+
+            case 2: {
+                media();
+                cout << "A media dos elementos e: " << m << endl;
+            }
+                break;
+
+            case 3: {
+                media();
+                soma();
+                cout << "A media dos elementos e: " << m << " e a soma deles e: " << s << endl;
+            }
+                break;
+
+            case 4: {
+                for (int i = 0; i != pronto.size(); i++) {
+                    if (pronto[i] < 0) {
+                        pronto[i] = 0;
+                    }
+                    media();
+                }
+                cout << "A media dos elementos positivos e: " << m << endl;
+            }
+                break;
+
+            case 5: {
+                sort(pronto.begin(), pronto.end());
+                for (int i = 0; i != pronto.size(); i++) {
+                    if (pronto[i] == pronto[i + 1]) {
+                        pronto[i] = 0;
+                        pronto[i++] = 0;
+                    }
+                }
+                media();
+                soma();
+                cout << "A media dos elementos positivos e: " << m << " e a soma deles e: " << s << endl;
+            }
+                break;
+            case 6: {
+                cout << "***SUA LISTA EM ORDEM CRESCENTE***" << endl;
+                std::sort(pronto.begin(), pronto.end());
+                for (int i = 0; i != pronto.size(); i++) {
+                    cout << pronto[i] << endl;
+                }
+            }
+                break;
+        }
+        cout << "Insira um numero dentre os referentes as operacoes, exceto 0, para continuar a execucao" << endl;
+        cout << "Ou 0 caso queira sair da aplicacao" << endl;
+        cin >> opcao;
+
+        system("clear");
+
+    } while (opcao != 0);
+
+    return 0;
+}
